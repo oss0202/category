@@ -1,0 +1,18 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+    datasource:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:category
+      username: musinsa
+      password: #antlstkWKd
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create
