@@ -1,9 +1,7 @@
-package com.musinsa.category.domain.common;
+package com.musinsa.common;
 
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,14 +13,9 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class CommonEntity {
-    @CreatedBy
-    private String createdUser;
 
     @CreatedDate
     private LocalDateTime createdDate;
-
-    @LastModifiedBy
-    private String modifiedUser;
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
