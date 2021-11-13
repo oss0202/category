@@ -29,6 +29,7 @@ public class CategoryService {
             return categoryRepository.findAll()
                     .stream()
                     .map(CategoryResponseDto::new)
+                    .sorted()
                     .collect(Collectors.toList());
     }
 }
