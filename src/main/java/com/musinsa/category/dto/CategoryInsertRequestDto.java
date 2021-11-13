@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 public class CategoryInsertRequestDto {
     private String categoryNm;
     private String upperCategoryId;
-    private String categoryEp;
+    private String categoryDc;
     private Long categoryIdOrder;
 
     @Builder
-    public CategoryInsertRequestDto(String categoryNm, String upperCategoryId, String categoryEp, Long categoryIdOrder) {
+    public CategoryInsertRequestDto(String categoryNm, String upperCategoryId, String categoryDc, Long categoryIdOrder) {
         this.categoryNm = categoryNm;
         this.upperCategoryId = upperCategoryId;
-        this.categoryEp = categoryEp;
+        this.categoryDc = categoryDc;
         this.categoryIdOrder = categoryIdOrder;
     }
 
@@ -25,7 +25,7 @@ public class CategoryInsertRequestDto {
         return Category.builder()
                 .categoryNm(categoryNm)
                 .upperCategoryId(upperCategoryId)
-                .categoryEp(categoryEp)
+                .categoryDc(categoryDc)
                 .categoryIdOrder(categoryIdOrder)
                 .build();
     }

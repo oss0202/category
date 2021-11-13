@@ -16,24 +16,24 @@ public class Category extends CommonEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    @Column
+    @Column(nullable = false)
     private String categoryNm;
 
     @Column
     private String upperCategoryId;
 
     @Column
-    private String categoryEp;
+    private String categoryDc;
 
-    @Column
+    @Column(nullable = false)
     private Long categoryIdOrder;
 
     @Builder
-    public Category(Long categoryId, String categoryNm, String upperCategoryId, String categoryEp, Long categoryIdOrder) {
+    public Category(Long categoryId, String categoryNm, String upperCategoryId, String categoryDc, Long categoryIdOrder) {
         this.categoryId = categoryId;
         this.categoryNm = categoryNm;
         this.upperCategoryId = upperCategoryId;
-        this.categoryEp = categoryEp;
+        this.categoryDc = categoryDc;
         this.categoryIdOrder = categoryIdOrder;
     }
 }

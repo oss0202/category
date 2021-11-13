@@ -11,14 +11,14 @@ public class CategoryResponseDto {
     private Long categoryId;
     private String categoryNm;
     private String upperCategoryId;
-    private String categoryEp;
+    private String categoryDc;
     private Long categoryIdOrder;
 
     public CategoryResponseDto(Category category) {
         this.categoryId = category.getCategoryId();
         this.categoryNm = category.getCategoryNm();
         this.upperCategoryId = category.getUpperCategoryId();
-        this.categoryEp = category.getCategoryEp();
+        this.categoryDc = category.getCategoryDc();
         this.categoryIdOrder = category.getCategoryIdOrder();
     }
 }
