@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CategoryInsertRequestDto {
     private String categoryNm;
-    private String upperCategoryId;
+    private Long upperCategoryId;
     private String categoryDc;
     private Long categoryIdOrder;
 
     @Builder
-    public CategoryInsertRequestDto(String categoryNm, String upperCategoryId, String categoryDc, Long categoryIdOrder) {
+    public CategoryInsertRequestDto(String categoryNm, Long upperCategoryId, String categoryDc, Long categoryIdOrder) {
         this.categoryNm = categoryNm;
         this.upperCategoryId = upperCategoryId;
         this.categoryDc = categoryDc;

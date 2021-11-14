@@ -20,7 +20,7 @@ public class Category extends CommonEntity {
     private String categoryNm;
 
     @Column
-    private String upperCategoryId;
+    private Long upperCategoryId;
 
     @Column
     private String categoryDc;
@@ -29,11 +29,22 @@ public class Category extends CommonEntity {
     private Long categoryIdOrder;
 
     @Builder
-    public Category(Long categoryId, String categoryNm, String upperCategoryId, String categoryDc, Long categoryIdOrder) {
+    public Category(Long categoryId, String categoryNm, Long upperCategoryId, String categoryDc, Long categoryIdOrder) {
         this.categoryId = categoryId;
         this.categoryNm = categoryNm;
         this.upperCategoryId = upperCategoryId;
         this.categoryDc = categoryDc;
         this.categoryIdOrder = categoryIdOrder;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", categoryNm='" + categoryNm + '\'' +
+                ", upperCategoryId='" + upperCategoryId + '\'' +
+                ", categoryDc='" + categoryDc + '\'' +
+                ", categoryIdOrder=" + categoryIdOrder +
+                '}';
     }
 }

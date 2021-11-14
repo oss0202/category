@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class CategoryResponseDto {
     private Long categoryId;
     private String categoryNm;
-    private String upperCategoryId;
+    private Long upperCategoryId;
     private String categoryDc;
     private Long categoryIdOrder;
 
@@ -20,5 +20,16 @@ public class CategoryResponseDto {
         this.upperCategoryId = category.getUpperCategoryId();
         this.categoryDc = category.getCategoryDc();
         this.categoryIdOrder = category.getCategoryIdOrder();
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryResponseDto{" +
+                "categoryId=" + categoryId +
+                ", categoryNm='" + categoryNm + '\'' +
+                ", upperCategoryId='" + upperCategoryId + '\'' +
+                ", categoryDc='" + categoryDc + '\'' +
+                ", categoryIdOrder=" + categoryIdOrder +
+                '}';
     }
 }
