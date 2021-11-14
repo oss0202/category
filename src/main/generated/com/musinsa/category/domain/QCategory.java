@@ -25,7 +25,7 @@ public class QCategory extends EntityPathBase<Category> {
 
     public final NumberPath<Long> categoryId = createNumber("categoryId", Long.class);
 
-    public final NumberPath<Long> categoryIdOrder = createNumber("categoryIdOrder", Long.class);
+    public final NumberPath<Integer> categoryIdOrder = createNumber("categoryIdOrder", Integer.class);
 
     public final StringPath categoryNm = createString("categoryNm");
 
@@ -35,7 +35,7 @@ public class QCategory extends EntityPathBase<Category> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
-    public final StringPath upperCategoryId = createString("upperCategoryId");
+    public final NumberPath<Long> upperCategoryId = createNumber("upperCategoryId", Long.class);
 
     public QCategory(String variable) {
         super(Category.class, forVariable(variable));

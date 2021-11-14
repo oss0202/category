@@ -11,10 +11,10 @@ public class CategoryInsertRequestDto {
     private String categoryNm;
     private Long upperCategoryId;
     private String categoryDc;
-    private Long categoryIdOrder;
+    private int categoryIdOrder;
 
     @Builder
-    public CategoryInsertRequestDto(String categoryNm, Long upperCategoryId, String categoryDc, Long categoryIdOrder) {
+    public CategoryInsertRequestDto(String categoryNm, Long upperCategoryId, String categoryDc, int categoryIdOrder) {
         this.categoryNm = categoryNm;
         this.upperCategoryId = upperCategoryId;
         this.categoryDc = categoryDc;

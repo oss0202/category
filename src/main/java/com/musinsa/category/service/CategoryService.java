@@ -50,7 +50,7 @@ public class CategoryService extends QuerydslRepositorySupport {
     카테고리 조건조회
      */
     @Transactional(readOnly = true)
-    public List<CategoryResponseDto> findByUpperCategoryId(String upperCategoryId) {
+    public List<CategoryResponseDto> findByUpperCategoryId(Long upperCategoryId) {
         return jpaQueryFactory.selectFrom(category)
         .where(eqUpperCategoryId(upperCategoryId))
 //        .where(category.upperCategoryId.eq(upperCategoryId))
@@ -60,8 +60,8 @@ public class CategoryService extends QuerydslRepositorySupport {
                 .collect(Collectors.toList());
     }
 
-    private BooleanExpression eqUpperCategoryId(String upperCategoryId){
-        if(StringUtils.isNullOrEmpty(upperCategoryId)){
+    private BooleanExpression eqUpperCategoryId(Long upperCategoryId){
+        if(upperCategoryId==null){
             return null;
         }
         return category.upperCategoryId.eq(upperCategoryId);

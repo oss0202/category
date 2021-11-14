@@ -12,7 +12,7 @@ public class CategoryResponseDto {
     private String categoryNm;
     private Long upperCategoryId;
     private String categoryDc;
-    private Long categoryIdOrder;
+    private int categoryIdOrder;
 
     public CategoryResponseDto(Category category) {
         this.categoryId = category.getCategoryId();

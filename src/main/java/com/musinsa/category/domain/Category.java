@@ -26,10 +26,10 @@ public class Category extends CommonEntity {
     private String categoryDc;
 
     @Column(nullable = false)
-    private Long categoryIdOrder;
+    private int categoryIdOrder;
 
     @Builder
-    public Category(Long categoryId, String categoryNm, Long upperCategoryId, String categoryDc, Long categoryIdOrder) {
+    public Category(Long categoryId, String categoryNm, Long upperCategoryId, String categoryDc, int categoryIdOrder) {
         this.categoryId = categoryId;
         this.categoryNm = categoryNm;
         this.upperCategoryId = upperCategoryId;
