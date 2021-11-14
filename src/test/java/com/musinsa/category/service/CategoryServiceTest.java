@@ -32,20 +32,20 @@ class CategoryServiceTest {
 //        categoryRepository.save(new Category().builder().categoryNm("세번째").upperCategoryId("").categoryDc("카테고리 설명3").categoryIdOrder(300L).build());
 //        categoryRepository.save(new Category().builder().categoryNm("네번째").upperCategoryId("").categoryDc("카테고리 설명4").categoryIdOrder(400L).build());
 
-        aLong1 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("첫번째").categoryDc("카테고리 설명1").categoryIdOrder(400L).build());
-        Long aLong2 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("두번째").categoryDc("카테고리 설명2").categoryIdOrder(400L).build());
-        Long aLong3 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("세번째").categoryDc("카테고리 설명3").categoryIdOrder(400L).build());
-        Long aLong4 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("네번째").categoryDc("카테고리 설명4").categoryIdOrder(400L).build());
-        Long aLong5 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("다섯번째").categoryDc("카테고리 설명5").categoryIdOrder(400L).build());
+        aLong1 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("첫번째").categoryDc("카테고리 설명1").categoryIdOrder(100).build());
+        Long aLong2 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("두번째").categoryDc("카테고리 설명2").categoryIdOrder(200).build());
+        Long aLong3 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("세번째").categoryDc("카테고리 설명3").categoryIdOrder(300).build());
+        Long aLong4 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("네번째").categoryDc("카테고리 설명4").categoryIdOrder(400).build());
+        Long aLong5 = categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("다섯번째").categoryDc("카테고리 설명5").categoryIdOrder(500).build());
 
 //        System.out.println("---------------- aLong ----------------");
 //        System.out.println(aLong5);
 
-        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("첫번째서브").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명1").categoryIdOrder(10L).build());
-        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("두번째서브").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명2").categoryIdOrder(400L).build());
-        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("세번째서브").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명3").categoryIdOrder(400L).build());
-        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("네번째서브").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명4").categoryIdOrder(400L).build());
-        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("다섯번째서브").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명5").categoryIdOrder(400L).build());
+        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("첫번째서브").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명1").categoryIdOrder(10).build());
+        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("두번째서브").upperCategoryId(aLong2).categoryDc("카테고리 서브 설명2").categoryIdOrder(20).build());
+        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("세번째서브").upperCategoryId(aLong3).categoryDc("카테고리 서브 설명3").categoryIdOrder(30).build());
+        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("네번째서브").upperCategoryId(aLong4).categoryDc("카테고리 서브 설명4").categoryIdOrder(40).build());
+        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("다섯번째서브").upperCategoryId(aLong5).categoryDc("카테고리 서브 설명5").categoryIdOrder(50).build());
 
 //        categoryRepository.save(new Category().builder().categoryNm("첫번째서브").upperCategoryId("1").categoryDc("카테고리 설명1").categoryIdOrder(aLong1).build());
 //        categoryRepository.save(new Category().builder().categoryNm("두번째서브").upperCategoryId("2").categoryDc("카테고리 설명2").categoryIdOrder(aLong2).build());
@@ -66,12 +66,13 @@ class CategoryServiceTest {
     @Test
     public void queryDSL_리스트_조회(){
         System.out.println("---------null-----------");
-        List<CategoryResponseDto> categories = categoryService.findByUpperCategoryId("");
+        Long aa = null;
+        List<CategoryResponseDto> categories = categoryService.findByUpperCategoryId(aa);
         categories.stream().forEach(category -> {
             System.out.println(category.toString());
         });
         System.out.println("---------not null-----------");
-        categories = categoryService.findByUpperCategoryId("1");
+        categories = categoryService.findByUpperCategoryId(aLong1);
         categories.stream().forEach(category -> {
             System.out.println(category.toString());
         });
