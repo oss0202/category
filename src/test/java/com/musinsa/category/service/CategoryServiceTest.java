@@ -3,6 +3,7 @@ package com.musinsa.category.service;
 import com.musinsa.category.domain.Category;
 import com.musinsa.category.dto.CategoryInsertRequestDto;
 import com.musinsa.category.dto.CategoryResponseDto;
+import com.musinsa.category.dto.CategoryUpdateRequestDto;
 import com.musinsa.category.repository.CategoryRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +42,8 @@ class CategoryServiceTest {
 //        System.out.println("---------------- aLong ----------------");
 //        System.out.println(aLong5);
 
-        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("첫번째서브").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명1").categoryIdOrder(10).build());
+        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("첫번째서브1").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명1").categoryIdOrder(10).build());
+        categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("첫번째서브2").upperCategoryId(aLong1).categoryDc("카테고리 서브 설명1").categoryIdOrder(20).build());
         categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("두번째서브").upperCategoryId(aLong2).categoryDc("카테고리 서브 설명2").categoryIdOrder(20).build());
         categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("세번째서브").upperCategoryId(aLong3).categoryDc("카테고리 서브 설명3").categoryIdOrder(30).build());
         categoryService.save(new CategoryInsertRequestDto().builder().categoryNm("네번째서브").upperCategoryId(aLong4).categoryDc("카테고리 서브 설명4").categoryIdOrder(40).build());
@@ -76,5 +78,34 @@ class CategoryServiceTest {
         categories.stream().forEach(category -> {
             System.out.println(category.toString());
         });
+    }
+
+    @Test
+    public void 카테고리_수정(){
+        CategoryUpdateRequestDto categoryUpdateRequestDto = new CategoryUpdateRequestDto().builder()
+                .categoryId(aLong1)
+                .categoryNm("첫번째_수정")
+                .categoryDc("카테고리 설명1_수정")
+                .categoryIdOrder(100)
+                .build();
+        categoryService.update(categoryUpdateRequestDto);
+        List<CategoryResponseDto> categories = categoryService.findByUpperCategoryId(null);
+        for (CategoryResponseDto category : categories) {
+            if(category.getCategoryId().equals(aLong1)){
+                System.out.println(category.toString());
+            }
+        }
+    }
+    @Test
+    public void 카테고리_삭제(){
+        categoryService.delete(aLong1);
+        List<CategoryResponseDto> categoryResponseDtos1 = categoryService.findByUpperCategoryId(null);
+        List<CategoryResponseDto> categoryResponseDtos2 = categoryService.findByUpperCategoryId(aLong1);
+
+        for (CategoryResponseDto categoryResponseDto : categoryResponseDtos1) {
+            System.out.println(categoryResponseDto.toString());
+        }
+        System.out.println(categoryResponseDtos2.size());
+
     }
 }

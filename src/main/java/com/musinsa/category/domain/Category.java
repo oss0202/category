@@ -47,4 +47,10 @@ public class Category extends CommonEntity {
                 ", categoryIdOrder=" + categoryIdOrder +
                 '}';
     }
+    public void update(String categoryNm, Long upperCategoryId, String categoryDc, int categoryIdOrder) {
+        this.categoryNm = categoryNm;
+        this.upperCategoryId = upperCategoryId;
+        this.categoryDc = categoryDc;
+        this.categoryIdOrder = categoryIdOrder;
+    }
 }
