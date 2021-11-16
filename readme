@@ -1,0 +1,25 @@
+※ 참고사항
+SpringBoot run 또는 JUnit Test가 올바르게 작동하지 않을 경우
+Gradle Task의 clean을 한 후에 작동 부탁드립니다.
+
+
+※ 리눅스에서 실행 방법
+1. jAVA 1.8 설치
+sudo yum install -y java-1.8.0-openjdk-devel.x86_64
+
+2. git 설치 후 pull받기
+
+# git 설치
+sudo yum install git
+
+# 폴더 생성
+mkdif ~/app/musinsa 
+
+# 폴더 이동
+cd ~/app/musinsa
+
+# git clone
+git clone https://github.com/oss0202/category.git
+
+3. 실행
+./gradlew clean build
