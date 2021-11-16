@@ -1,11 +1,11 @@
 package com.musinsa.category.dto;
 
-import com.musinsa.category.domain.Category;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@ToString
 @Getter
 @NoArgsConstructor
 public class CategoryUpdateRequestDto {
@@ -22,16 +22,5 @@ public class CategoryUpdateRequestDto {
         this.upperCategoryId = upperCategoryId;
         this.categoryDc = categoryDc;
         this.categoryIdOrder = categoryIdOrder;
-    }
-
-    @Override
-    public String toString() {
-        return "CategoryUpdateRequestDto{" +
-                "categoryId=" + categoryId +
-                ", categoryNm='" + categoryNm + '\'' +
-                ", upperCategoryId=" + upperCategoryId +
-                ", categoryDc='" + categoryDc + '\'' +
-                ", categoryIdOrder=" + categoryIdOrder +
-                '}';
     }
 }

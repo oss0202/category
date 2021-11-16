@@ -1,10 +1,11 @@
 package com.musinsa.category.dto;
 
 import com.musinsa.category.domain.Category;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString
 @Getter
 @NoArgsConstructor
 public class CategoryResponseDto {
@@ -20,16 +21,5 @@ public class CategoryResponseDto {
         this.upperCategoryId = category.getUpperCategoryId();
         this.categoryDc = category.getCategoryDc();
         this.categoryIdOrder = category.getCategoryIdOrder();
-    }
-
-    @Override
-    public String toString() {
-        return "CategoryResponseDto{" +
-                "categoryId=" + categoryId +
-                ", categoryNm='" + categoryNm + '\'' +
-                ", upperCategoryId='" + upperCategoryId + '\'' +
-                ", categoryDc='" + categoryDc + '\'' +
-                ", categoryIdOrder=" + categoryIdOrder +
-                '}';
     }
 }

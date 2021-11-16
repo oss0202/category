@@ -7,7 +7,6 @@ import com.musinsa.category.dto.CategoryUpdateRequestDto;
 import com.musinsa.category.repository.CategoryRepository;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.h2.util.StringUtils;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +17,6 @@ import java.util.stream.Collectors;
 
 import static com.musinsa.category.domain.QCategory.category;
 
-//@RequiredArgsConstructor
 @Service
 public class CategoryService extends QuerydslRepositorySupport {
 
@@ -31,17 +29,18 @@ public class CategoryService extends QuerydslRepositorySupport {
         this.jpaQueryFactory = jpaQueryFactory;
     }
 
-    /*
-        카테고리 등록
-         */
-    public Long save(CategoryInsertRequestDto categoryInsertRequestDto){
+    /**
+     *  카테고리 등록
+     **/
+    public Long saveCategory(CategoryInsertRequestDto categoryInsertRequestDto){
         return categoryRepository.save(categoryInsertRequestDto.toEntity()).getCategoryId();
     }
-    /*
-    카테고리 모두조회
-     */
+
+    /**
+     * 카테고리 모두 조회
+     **/
     @Transactional(readOnly = true)
-    public List<CategoryResponseDto> findAll() {
+    public List<CategoryResponseDto> findCategory(Long categoryId) {
             return categoryRepository.findAll()
                     .stream()
                     .map(CategoryResponseDto::new)
@@ -49,24 +48,23 @@ public class CategoryService extends QuerydslRepositorySupport {
                     .collect(Collectors.toList());
     }
 
-    /*
-    카테고리 조건조회
-     */
+    /**
+     *  카테고리 조건 조회
+    **/
     @Transactional(readOnly = true)
     public List<CategoryResponseDto> findByUpperCategoryId(Long upperCategoryId) {
         return jpaQueryFactory.selectFrom(category)
         .where(eqUpperCategoryId(upperCategoryId))
-//        .where(category.upperCategoryId.eq(upperCategoryId))
         .fetch()
                 .stream()
                 .map(CategoryResponseDto::new)
                 .collect(Collectors.toList());
     }
-    /*
-    카테고리 업데이트
-     */
+    /**
+     *  카테고리 수정
+     **/
     @Transactional
-    public Long update(CategoryUpdateRequestDto categoryUpdateRequestDto){
+    public Long updateCategory(CategoryUpdateRequestDto categoryUpdateRequestDto){
         Optional<Category> category = categoryRepository.findById(categoryUpdateRequestDto.getCategoryId());
 
         category.ifPresent(selectCategory -> {
@@ -76,11 +74,12 @@ public class CategoryService extends QuerydslRepositorySupport {
 
         return categoryUpdateRequestDto.getCategoryId();
     }
-    /*
-    카테고리 지우기
-     */
+
+    /**
+     * 카테고리 지우기
+     **/
     @Transactional
-    public Long delete(Long categoryId){
+    public Long deleteCategory(Long categoryId){
         Optional<Category> category = categoryRepository.findById(categoryId);
         category.ifPresent(selectCategory -> {
            categoryRepository.deleteById(categoryId);
